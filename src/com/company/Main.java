@@ -15,12 +15,10 @@ public class Main {
         if (validate(ip)) {
             System.out.print("Enter a port number: ");
             int port = sc.nextInt();
-            try {
-                Socket socket = new Socket(ip, port);
-                socket.close();
+            try (Socket socket = new Socket(ip, port)){
                 System.out.println("Success");
             } catch (Exception e) {
-                System.out.println("Failure " + e.getMessage());
+                System.out.println("Failure\n" + e.getMessage());
             }
 
         } else {
